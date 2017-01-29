@@ -25585,13 +25585,13 @@
 	    getInitialState: function getInitialState() {
 	        return {
 	            count: 0,
-	            countdownStatus: 'stopped'
+	            timerStatus: 'stopped'
 	        };
 	    },
 
 	    componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
-	        if (this.state.countdownStatus !== prevState.countdownStatus) {
-	            switch (this.state.countdownStatus) {
+	        if (this.state.timerStatus !== prevState.timerStatus) {
+	            switch (this.state.timerStatus) {
 	                case 'started':
 	                    this.startTimer();
 	                    break;
@@ -25609,7 +25609,7 @@
 
 	    handleStatusChange: function handleStatusChange(newStatus) {
 	        this.setState({
-	            countdownStatus: newStatus
+	            timerStatus: newStatus
 	        });
 	    },
 
@@ -25629,7 +25629,7 @@
 
 	            if (newCount === 600) {
 	                _this.setState({
-	                    countdownStatus: 'stopped'
+	                    timerStatus: 'stopped'
 	                });
 	            }
 	        }, 1000);
@@ -25637,7 +25637,7 @@
 
 	    render: function render() {
 	        var _state = this.state,
-	            countdownStatus = _state.countdownStatus,
+	            timerStatus = _state.timerStatus,
 	            count = _state.count;
 
 	        return React.createElement(
@@ -25649,7 +25649,7 @@
 	                'Timer'
 	            ),
 	            React.createElement(Clock, { totalSeconds: count }),
-	            React.createElement(Controls, { countdownStatus: countdownStatus, onStatusChange: this.handleStatusChange })
+	            React.createElement(Controls, { countdownStatus: timerStatus, onStatusChange: this.handleStatusChange })
 	        );
 	    }
 	});
